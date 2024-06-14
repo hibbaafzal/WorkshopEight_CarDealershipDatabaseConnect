@@ -31,7 +31,7 @@ public class LeaseDao implements LeaseInt {
                 String lesseeName = resultSet.getString("lessee_name");
                 String vin = resultSet.getString("vin");
 
-                Lease lease = new Lease(id, lesseeName, vin);
+                Lease lease = new Lease(lesseeName, vin);
                 leases.add(lease);
             }
         } catch (Exception e) {
@@ -58,6 +58,14 @@ public class LeaseDao implements LeaseInt {
             preparedStatement.setString(2, lease.getLesseeName());
             preparedStatement.setString(3,lease.getVin());
             preparedStatement.executeUpdate();
+
+            try (
+                    ResultSet keys = preparedStatement.getGeneratedKeys()) {
+                while (keys.next()) {
+                    generateId = keys.getInt(1);
+                }
+            }
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
