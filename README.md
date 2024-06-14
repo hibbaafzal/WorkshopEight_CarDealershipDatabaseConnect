@@ -87,9 +87,15 @@ If we run the query to search for a vehicle that has been removed, it will not s
 <img width="766" alt="Screenshot 2024-06-14 at 5 23 14 PM" src="https://github.com/hibbaafzal/WorkshopEight_CarDealershipDatabaseConnect/assets/166542360/e632d0b2-4af3-4fc0-be62-95ec4b452e84">
 
 
+When the query is ran, the deleted sale is no longer in the database. 
+
+<img width="587" alt="Screenshot 2024-06-14 at 5 40 49 PM" src="https://github.com/hibbaafzal/WorkshopEight_CarDealershipDatabaseConnect/assets/166542360/3947c01a-2717-4eb5-be5e-74e18977c488">
+
+
 ### View all Sales
 
 <img width="803" alt="Screenshot 2024-06-14 at 5 03 22 PM" src="https://github.com/hibbaafzal/WorkshopEight_CarDealershipDatabaseConnect/assets/166542360/8385b1b6-c716-45a8-a0cb-b9cba000660f">
+
 
 ### Add a Lease
 <img width="595" alt="Screenshot 2024-06-14 at 5 11 42 PM" src="https://github.com/hibbaafzal/WorkshopEight_CarDealershipDatabaseConnect/assets/166542360/aabd0e17-f431-4ae5-8f27-ad7d62bc322c">
@@ -107,5 +113,10 @@ If we run the query, to search for the deleted lease, it will not be found as sh
 
 
 </details>
+
+
+## Interesting Piece of Code
+
+<img width="833" alt="Screenshot 2024-06-14 at 5 54 26 PM" src="https://github.com/hibbaafzal/WorkshopEight_CarDealershipDatabaseConnect/assets/166542360/9cf9d268-e903-4374-b609-bbe06a73729f">
 
  
