@@ -16,6 +16,7 @@ public class SalesDao implements SalesInt {
     }
 
     @Override
+
     public List<Sales> getAllSales() {
         List<Sales> sales = new ArrayList<>();
         try (
@@ -25,17 +26,19 @@ public class SalesDao implements SalesInt {
                 ResultSet resultSet = preparedStatement.executeQuery();
         ) {
             while (resultSet.next()) {
-
                 int id = resultSet.getInt("id");
                 String buyerName = resultSet.getString("buyer_name");
                 String vin = resultSet.getString("vin");
+                String date = resultSet.getString("contract_date");
 
+                Sales sale = new Sales (id, buyerName, vin, date);
+                sales.add(sale);
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            return sales;
         }
+        return sales;
+
     }
 
     @Override

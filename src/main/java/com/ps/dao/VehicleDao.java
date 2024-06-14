@@ -125,49 +125,6 @@ public class VehicleDao implements VehicleInt {
     }
 
 
-//    @Override
-//    public List<Vehicle> getVehiclesByMileageRange(int minMileage, int maxMileage) {
-//        List<Vehicle> vehicles = new ArrayList<>();
-//        try (
-//                Connection connection = dataSource.getConnection();
-//                PreparedStatement preparedStatement = connection.prepareStatement(
-//                        "SELECT * FROM vehicles WHERE mileage BETWEEN ? AND ?"
-//                );
-//        ) {
-//            preparedStatement.setInt(1, minMileage);
-//            preparedStatement.setInt(2, maxMileage);
-//            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-//                while (resultSet.next()) {
-//
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return vehicles;
-//    }
-//
-//
-//    @Override
-//    public List<Vehicle> getVehiclesByType(String type) {
-//        List<Vehicle> vehicles = new ArrayList<>();
-//        try (
-//                Connection connection = dataSource.getConnection();
-//                PreparedStatement preparedStatement = connection.prepareStatement(
-//                        "SELECT * FROM vehicles WHERE type = ?"
-//                );
-//        ) {
-//            preparedStatement.setString(1, type);
-//            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-//                while (resultSet.next()) {
-//
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return vehicles;
-//    }
 
     @Override
     public int createVehicle(Vehicle vehicle) {

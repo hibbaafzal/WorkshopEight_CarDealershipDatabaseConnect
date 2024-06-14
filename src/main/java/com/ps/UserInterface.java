@@ -66,12 +66,11 @@ public class UserInterface {
         int choice;
         do {
             System.out.println("\nSearch Vehicles:");
-            System.out.println("1. Get all Vehicles");
-            System.out.println("2. Make/Model");
-            System.out.println("3. Year Range");
-            System.out.println("4. Color");
-         //   System.out.println("5. Mileage Range");
-          //  System.out.println("6. Type");
+            System.out.println("\t1. Get all Vehicles");
+            System.out.println("\t2. Make/Model");
+            System.out.println("\t3. Year Range");
+            System.out.println("\t4. Color");
+
             System.out.println("0. Go Back");
 
             choice = scanner.nextInt();
@@ -80,8 +79,12 @@ public class UserInterface {
             switch (choice) {
                 case 1:
                     List<Vehicle> allVehicles = vehicleDao.getAllVehicles();
-                    allVehicles.forEach(System.out::println);
+                    for (Vehicle vehicle: allVehicles) {
+                        System.out.println(vehicle);
+                    }
+
                     break;
+
                 case 2:
                     System.out.print("Enter make: ");
                     String make = scanner.nextLine();
@@ -90,6 +93,7 @@ public class UserInterface {
                     List<Vehicle> vehiclesByMakeModel = vehicleDao.getVehiclesByMakeModel(make, model);
                     vehiclesByMakeModel.forEach(System.out::println);
                     break;
+
                 case 3:
                     System.out.print("Enter start year: ");
                     int startYear = scanner.nextInt();
@@ -98,29 +102,18 @@ public class UserInterface {
                     List<Vehicle> vehiclesByYearRange = vehicleDao.getVehiclesByYearRange(startYear, endYear);
                     vehiclesByYearRange.forEach(System.out::println);
                     break;
+
                 case 4:
                     System.out.print("Enter color: ");
                     String color = scanner.nextLine();
                     List<Vehicle> vehiclesByColor = vehicleDao.getVehiclesByColor(color);
                     vehiclesByColor.forEach(System.out::println);
                     break;
-//                case 5:
-//                    System.out.print("Enter minimum mileage: ");
-//                    int minMileage = scanner.nextInt();
-//                    System.out.print("Enter maximum mileage: ");
-//                    int maxMileage = scanner.nextInt();
-//                    List<Vehicle> vehiclesByMileageRange = vehicleDao.getVehiclesByMileageRange(minMileage, maxMileage);
-//                    vehiclesByMileageRange.forEach(System.out::println);
-//                    break;
-//                case 6:
-//                    System.out.print("Enter type: ");
-//                    String type = scanner.nextLine();
-//                    List<Vehicle> vehiclesByType = vehicleDao.getVehiclesByType(type);
-//                    vehiclesByType.forEach(System.out::println);
-//                    break;
+
                 case 0:
                     System.out.println("Returning to main menu...");
                     break;
+
                 default:
                     System.out.println("Invalid choice, please try again.");
             }
@@ -130,10 +123,10 @@ public class UserInterface {
     private static void manageVehicles() {
         int choice;
         do {
-            System.out.println("\nVehicle Management:");
-            System.out.println("1. Add Vehicle");
-            System.out.println("2. Remove Vehicle");
-            System.out.println("0. Go Back");
+            System.out.println("What would you like to do?:");
+            System.out.println("\t1. Add Vehicle");
+            System.out.println("\t2. Remove Vehicle");
+            System.out.println("\t0. Go Back");
 
             choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -151,7 +144,7 @@ public class UserInterface {
                     scanner.nextLine(); // Consume newline
                     System.out.print("Enter color: ");
                     String color = scanner.nextLine();
-                   ;
+
 
                     Vehicle vehicle = new Vehicle(vin, make, model, year, color);
                     vehicleDao.createVehicle(vehicle);
@@ -178,18 +171,19 @@ public class UserInterface {
         int choice;
         do {
             System.out.println("\nManage Sales and Leases:");
-            System.out.println("1. Add a Sale");
-            System.out.println("2. Delete a Sale");
-            System.out.println("3. View all Sales");
-            System.out.println("4. Add a Lease");
-            System.out.println("5. Delete a Lease");
-            System.out.println("6. View all Leases");
-            System.out.println("0. Go Back");
+            System.out.println("\t1. Add a Sale");
+            System.out.println("\t2. Delete a Sale");
+            System.out.println("\t3. View all Sales");
+            System.out.println("\t4. Add a Lease");
+            System.out.println("\t5. Delete a Lease");
+            System.out.println("\t6. View all Leases");
+            System.out.println("\t0. Go Back");
 
             choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
             switch (choice) {
+
                 case 1:
                     System.out.print("Enter buyer name: ");
                     String buyerName = scanner.nextLine();
@@ -198,11 +192,12 @@ public class UserInterface {
 
                     System.out.print("Enter sale date (YYYY-MM-DD): ");
                     String saleDate = scanner.nextLine();
-                 //   Sales sale = new Sales(buyerName, saleVin, saleDate);
+                 //   Sales sale = new Sales(id, buyerName, saleVin, saleDate);
 
-                   // salesDao.createSale(sale);
+                 //   salesDao.createSale(sale);
                     System.out.println("Sale added successfully.");
                     break;
+
                 case 2:
                     System.out.print("Enter Sale ID to delete: ");
                     int saleId = scanner.nextInt();
@@ -210,18 +205,22 @@ public class UserInterface {
                     salesDao.deleteSale(saleId);
                     System.out.println("Sale removed successfully.");
                     break;
+
                 case 3:
-                    List<Sales> sales = salesDao.getAllSales();
-                    sales.forEach(System.out::println);
+                    List<Sales> allSales = salesDao.getAllSales();
+                    for (Sales sales : allSales) {
+                        System.out.println(sales);
+                    }
                     break;
+
                 case 4:
                     System.out.print("Enter lessee name: ");
                     String lesseeName = scanner.nextLine();
                     System.out.print("Enter vehicle VIN: ");
                     String leaseVin = scanner.nextLine();
 
-                    Lease lease = new Lease(lesseeName, leaseVin);
-                    leaseDao.createLease(lease);
+                      Lease lease = new Lease(lesseeName, leaseVin);
+                      int id = leaseDao.createLease(lease);
                     System.out.println("Lease added successfully.");
                     break;
 
@@ -232,14 +231,17 @@ public class UserInterface {
                     leaseDao.deleteLease(leaseId);
                     System.out.println("Lease removed successfully.");
                     break;
-                case 6:
 
-                  //  List<Lease> leases = leaseDao.getAllLease();
-                  //  leases.forEach(System.out::println);
+                case 6:
+                    List<Lease> leases = leaseDao.allLeases();
+                    leases.forEach(System.out::println);
+                    System.out.println(leases);
                     break;
+
                 case 0:
                     System.out.println("Returning to main menu...");
                     return;
+
                 default:
                     System.out.println("Invalid choice, please try again.");
             }

@@ -17,7 +17,7 @@ public class LeaseDao implements LeaseInt {
 
     }
 @Override
-    public List<Lease> getallLease() {
+    public List<Lease> allLeases() {
         List<Lease> leases = new ArrayList<>();
 
         try(
@@ -30,6 +30,9 @@ public class LeaseDao implements LeaseInt {
                 int id = resultSet.getInt("id");
                 String lesseeName = resultSet.getString("lessee_name");
                 String vin = resultSet.getString("vin");
+
+                Lease lease = new Lease(id, lesseeName, vin);
+                leases.add(lease);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,6 +40,9 @@ public class LeaseDao implements LeaseInt {
             return leases;
         }
     }
+
+
+
 @Override
     public int createLease(Lease lease) {
         int generateId = -1;

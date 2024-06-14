@@ -9,7 +9,9 @@ import java.util.List;
 public interface LeaseInt {
 
 
-    List<Lease> getallLease();
+
+
+    List<Lease> allLeases();
 
     int createLease(Lease lease);
 

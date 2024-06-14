@@ -6,9 +6,10 @@ public class Lease {
     private String lesseeName;
     private String vin;
 
-    public Lease(String vin, String lesseeName) {
+    public Lease(int id, String vin, String lesseeName) {
         this.vin = vin;
         this.lesseeName = lesseeName;
+        this.id = id;
 
     }
 
