@@ -4,10 +4,7 @@ import com.ps.dao.interfaces.VehicleInt;
 import com.ps.models.Vehicle;
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,20 +82,34 @@ public class VehicleDao implements VehicleInt {
                 Connection connection = dataSource.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(
                         "SELECT * FROM vehicles WHERE year BETWEEN ? AND ?");
-                ResultSet resultSet = preparedStatement.executeQuery();
+
         ) {
-            while (resultSet.next()) {
-                int year = resultSet.getInt("year");
-            }
 
             preparedStatement.setInt(1, startYear);
             preparedStatement.setInt(2, endYear);
+            try (
+                    ResultSet resultSet = preparedStatement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+
+                    Vehicle vehicle = new Vehicle(
+                            resultSet.getString("vin"),
+                            resultSet.getString("make"),
+                            resultSet.getString("model"),
+                            resultSet.getInt("year"),
+                            resultSet.getString("color")
+                    );
+                    vehicles.add(vehicle);
+                }
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return vehicles;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return vehicles;
     }
 
 
@@ -112,9 +123,19 @@ public class VehicleDao implements VehicleInt {
                 );
         ) {
             preparedStatement.setString(1, color);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            try (
+                    ResultSet resultSet = preparedStatement.executeQuery()
+            ) {
+
                 while (resultSet.next()) {
-                    color = resultSet.getString("color");
+                    Vehicle vehicle = new Vehicle(
+                            resultSet.getString("vin"),
+                            resultSet.getString("make"),
+                            resultSet.getString("model"),
+                            resultSet.getInt("year"),
+                            resultSet.getString("color")
+                    );
+                    vehicles.add(vehicle);
 
                 }
             }
@@ -123,7 +144,6 @@ public class VehicleDao implements VehicleInt {
         }
         return vehicles;
     }
-
 
 
     @Override
