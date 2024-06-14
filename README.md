@@ -54,6 +54,8 @@ When the user first starts up the application, they are able to choose one of th
 <img width="797" alt="Screenshot 2024-06-14 at 4 50 59 PM" src="https://github.com/hibbaafzal/WorkshopEight_CarDealershipDatabaseConnect/assets/166542360/e8be3d0d-089b-4cbb-9b42-7eb10d395bc5">
 
 The added vehicle then is added to the database, as shown below.
+
+
 <img width="444" alt="Screenshot 2024-06-14 at 4 51 55 PM" src="https://github.com/hibbaafzal/WorkshopEight_CarDealershipDatabaseConnect/assets/166542360/652f1105-2b97-4cbb-8f76-e5e5bf322572">
 
 ### Removing a Vehicle
