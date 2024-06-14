@@ -57,6 +57,13 @@ public class SalesDao implements SalesInt {
             preparedStatement.setString(4, sale.getContractDate());
             preparedStatement.executeUpdate();
 
+            try (
+                    ResultSet keys = preparedStatement.getGeneratedKeys()) {
+                while (keys.next()) {
+                    generatedId = keys.getInt(1);
+                }
+            }
+
 
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
