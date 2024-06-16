@@ -1,6 +1,6 @@
 # Car Dealership Database Connection
 
-This application connects the dealership database in SQL and connects it to the Java IDE allowing users to search for vehicles, sales, or leases. 
+This application connects the dealership database in SQL with the Java IDE allowing users to search for vehicles, sales, or leases. 
 
 Users can perform the following actions:
   - View all vehicles
